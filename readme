@@ -1,0 +1,11 @@
+emcc lib/demo.c -s WASM=1 -o ./public/demo.js
+
+emcc lib/demo.c -s WASM=1 -O2 -o public/demo.js
+
+emcc lib/demo.c -s WASM=1 --post-js public/ready.js -o ./public/demo.js
+
+emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_getNum']" -o public/demo.js
+
+cccall('getNum')
+ccall('greet','string')
+ccall('greet','string',['string'],['Philippe'])
